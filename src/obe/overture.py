@@ -7,7 +7,7 @@ import geopandas as gpd
 import pandas as pd
 
 
-def process_building_footprints(aoi_input, version):
+def process_building_footprints(aoi_input):
     if isinstance(aoi_input, str):
         aoi_gdf = gpd.read_file(aoi_input)
     elif isinstance(aoi_input, dict):
@@ -37,10 +37,8 @@ def process_building_footprints(aoi_input, version):
                 bbox_str,
                 "-o",
                 output_file,
-                "-r",
-                version,
-                "-cth",
-                "buildings",
+                "--type",
+                "building",
                 # "-cty",
                 # "building",
             ]
@@ -87,11 +85,6 @@ def main():
         help="Path to save the output file containing the building footprints",
     )
     parser.add_argument(
-        "--version",
-        help="Version of the Overture Maps data",
-        default="2024-05-16-beta.0",
-    )
-    parser.add_argument(
         "--format",
         help="Output format: geojson, geopackage, or shapefile",
         default="geojson",
@@ -100,7 +93,7 @@ def main():
     args = parser.parse_args()
 
     print("Starting the processing of building footprints...")
-    result_gdf = process_building_footprints(args.input, args.version)
+    result_gdf = process_building_footprints(args.input)
     print(f"Processed {len(result_gdf)} building footprints.")
 
     if not args.output:

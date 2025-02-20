@@ -60,7 +60,7 @@ def download_snapshot(download_url):
             return json.load(file)
 
 
-def process_osm_data(aoi_input, feature_type):
+def process_osm_data(aoi_input):
     if isinstance(aoi_input, str):
         aoi_gdf = gpd.read_file(aoi_input)
     elif isinstance(aoi_input, dict):
@@ -77,7 +77,7 @@ def process_osm_data(aoi_input, feature_type):
         aoi_shape = aoi_row.geometry
         geometry = get_geometry(aoi_shape)
 
-        task_response = request_osm_data(geometry, feature_type)
+        task_response = request_osm_data(geometry)
         task_link = task_response.get("track_link")
 
         if not task_link:
