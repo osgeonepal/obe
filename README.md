@@ -98,3 +98,8 @@ download_buildings(
 }
 ```
 
+### Example Output 
+
+![image](https://github.com/user-attachments/assets/a7646d95-f80d-49ed-afc9-1189055ea890)
+
+
