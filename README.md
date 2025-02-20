@@ -8,19 +8,19 @@ Run Example Notebook [here:](./example_usage.ipynb)
 ## Features
 
 - Extract building footprints from multiple sources:
-  - Google Open Buildings
-  - Microsoft Building Footprints
-  - OpenStreetMap
-  - Overture Maps
+  - **Google** Open Buildings
+  - **Microsoft** Building Footprints
+  - **OpenStreetMap**
+  - **Overture** Maps
 - Support for multiple output formats:
   - GeoJSON
   - GeoPackage
   - Shapefile
   - GeoJSONSeq
   - GeoParquet
-- Command-line interface
+- Command-line 
 - Python API
-- Streamlit web interface
+- [Streamlit web interface](https://obextract.streamlit.app/)
 
 ## Installation
 
