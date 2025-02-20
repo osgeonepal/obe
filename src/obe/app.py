@@ -23,9 +23,11 @@ def download_buildings(
     source,
     input_path,
     output_path,
-    file_format,
+    format,
     location=None,
 ):
+    source = source.lower()
+    file_format = format.lower()
     if source == "google":
         result_gdf = process_google(input_path)
     elif source == "microsoft":
