@@ -14,7 +14,7 @@ file_formats = ["geojson", "geojsonseq", "geoparquet", "geopackage", "shapefile"
 input_option = st.sidebar.radio("Input Option", ["Paste GeoJSON", "Upload File"])
 source = st.sidebar.selectbox("Data Source", data_sources)
 file_format = st.sidebar.selectbox("Output File Format", file_formats)
-location = st.sidebar.text_input("Location (required for Microsoft)", value="")
+location = st.sidebar.text_input("Country (required for Microsoft)", value="")
 
 if input_option == "Paste GeoJSON":
     geojson_input = st.text_area("Paste GeoJSON")

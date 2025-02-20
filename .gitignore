@@ -1,3 +1,6 @@
 env
 src/obe/*.geojson
 src/obe/__pycache__/
+tests/data/
+tests/outputs/
+tests/__pycache__/
