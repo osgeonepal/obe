@@ -27,6 +27,7 @@ packages = [{include = "obe", from = "src"}]
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.4"
+commitizen = "^4.2.2"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
