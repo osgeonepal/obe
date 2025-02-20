@@ -4,7 +4,7 @@ import os
 import geopandas as gpd
 import streamlit as st
 
-from .app import download_buildings
+from src.obe.app import download_buildings
 
 st.title("Open Buildings Extractor")
 
