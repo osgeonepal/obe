@@ -23,7 +23,7 @@ obe = "obe.app:main"
 [tool.poetry]
 version = "0.0.2"
 packages = [{include = "obe", from = "src"}]
-
+license = "MIT" 
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.4"
