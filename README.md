@@ -44,6 +44,7 @@ obe --source <source> --input <input.geojson> --output <output.geojson>
 
 
 ### Examples:
+```bash
 # Google Open Buildings
 obe --source google --input area.geojson --output google_buildings.geojson
 
