@@ -45,7 +45,6 @@ def download_tile_buildings(
     """Download buildings for a single S2 tile."""
     # try:
     tile_url = urljoin(BUILDING_BASE_URL, f"{tile_id}_buildings.csv.gz")
-    print(tile_url)
     df = pd.read_csv(tile_url, compression="gzip", header=None)
 
     if len(df) == 0:
