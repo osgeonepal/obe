@@ -3,7 +3,7 @@
 A Python package to extract building footprints from multiple open data sources including Google Open Buildings, Microsoft Building Footprints, OpenStreetMap, and Overture Maps.
 
 ## Example 
-Run Example Notebook [here:](./example_usage.ipynb) 
+Run Example Notebook [here:](./example_obe_usage.ipynb) 
 
 ## Features
 
