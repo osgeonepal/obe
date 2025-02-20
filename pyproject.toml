@@ -1,0 +1,24 @@
+[project]
+name = "obe"
+version = "0.1.0"
+description = "Open Buildings Extractor"
+authors = [
+    {name = "kshitijrajsharma",email = "skshitizraj@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "tqdm (>=4.67.1,<5.0.0)",
+    "shapely (>=2.0.7,<3.0.0)",
+    "geopandas (>=1.0.1,<2.0.0)",
+    "pandas (>=2.2.3,<3.0.0)",
+    "requests (>=2.32.3,<3.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "obe", from = "src"}]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
