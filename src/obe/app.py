@@ -7,11 +7,23 @@ from .osm import process_osm_data
 from .overture import process_building_footprints as process_overture
 
 
+def get_output_extension(file_format):
+    """Get the appropriate file extension for each file_format."""
+    file_format_extensions = {
+        "geojson": ".geojson",
+        "geopackage": ".gpkg",
+        "shapefile": ".shp",
+        "geojsonseq": ".geojsonseq",
+        "geoparquet": ".parquet",
+    }
+    return file_format_extensions[file_format]
+
+
 def download_buildings(
     source,
     input_path,
     output_path,
-    format,
+    file_format,
     location=None,
 ):
     if source == "google":
@@ -31,19 +43,20 @@ def download_buildings(
 
     if not output_path:
         input_filename = os.path.splitext(os.path.basename(input_path))[0]
-        output_path = f"{input_filename}_{source}_buildings.{format}"
+        extension = get_output_extension(file_format)
+        output_path = f"{input_filename}_{source}_buildings{extension}"
 
     print(f"Saving results to {output_path}...")
 
-    if format == "geojson":
+    if file_format == "geojson":
         result_gdf.to_file(output_path, driver="GeoJSON")
-    elif format == "geopackage":
+    elif file_format == "geopackage":
         result_gdf.to_file(output_path, driver="GPKG")
-    elif format == "shapefile":
+    elif file_format == "shapefile":
         result_gdf.to_file(output_path, driver="ESRI Shapefile")
-    elif format == "geojsonseq":
+    elif file_format == "geojsonseq":
         result_gdf.to_file(output_path, driver="GeoJSONSeq")
-    elif format == "geoparquet":
+    elif file_format == "geoparquet":
         result_gdf.to_parquet(output_path)
 
     print(f"Results successfully saved to {output_path}.")
@@ -70,7 +83,7 @@ def main():
     )
     parser.add_argument(
         "--format",
-        help="Output format: geojson, geojsonseq, geoparquet, geopackage, or shapefile",
+        help="Output file_format: geojson, geojsonseq, geoparquet, geopackage, or shapefile",
         default="geojson",
         choices=["geojson", "geojsonseq", "geoparquet", "geopackage", "shapefile"],
     )
