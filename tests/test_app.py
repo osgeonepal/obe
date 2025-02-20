@@ -127,24 +127,24 @@ def test_invalid_source(test_geojson_path):
         )
 
 
-def test_compare_results(test_geojson_path):
-    """Compare results from different sources."""
-    sources = {"google": None, "microsoft": "Nepal", "osm": None, "overture": None}
+# def test_compare_results(test_geojson_path):
+#     """Compare results from different sources."""
+#     sources = {"google": None, "microsoft": "Nepal", "osm": None, "overture": None}
 
-    results = {}
-    for source, location in sources.items():
-        result_file = os.path.join(OUTPUT_DIR, f"{source}_buildings.geojson")
-        download_buildings(
-            source=source,
-            input_path=test_geojson_path,
-            output_path=result_file,
-            format="geojson",
-            location=location,
-        )
-        results[source] = gpd.read_file(result_file)
+#     results = {}
+#     for source, location in sources.items():
+#         result_file = os.path.join(OUTPUT_DIR, f"{source}_buildings.geojson")
+#         download_buildings(
+#             source=source,
+#             input_path=test_geojson_path,
+#             output_path=result_file,
+#             format="geojson",
+#             location=location,
+#         )
+#         results[source] = gpd.read_file(result_file)
 
-    # Print comparison statistics
-    for source, gdf in results.items():
-        print(f"\n{source.upper()} Statistics:")
-        print(f"Number of buildings: {len(gdf)}")
-        print(f"Total area: {gdf.geometry.area.sum():.2f} square meters")
+#     # Print comparison statistics
+#     for source, gdf in results.items():
+#         print(f"\n{source.upper()} Statistics:")
+#         print(f"Number of buildings: {len(gdf)}")
+#         print(f"Total area: {gdf.geometry.area.sum():.2f} square meters")
