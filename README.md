@@ -39,10 +39,11 @@ poetry add obe
 ### Command line interface 
 
 ```bash
-# Basic usage
 obe --source <source> --input <input.geojson> --output <output.geojson>
+```
 
-# Examples:
+
+### Examples:
 # Google Open Buildings
 obe --source google --input area.geojson --output google_buildings.geojson
 
