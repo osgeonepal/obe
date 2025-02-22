@@ -30,6 +30,10 @@ pytest = "^8.3.4"
 commitizen = "^4.2.2"
 
 
+
+[tool.poetry.group.prod.dependencies]
+streamlit = "^1.42.2"
+
 [tool.commitizen]
 name = "cz_conventional_commits"
 tag_format = "$version"
