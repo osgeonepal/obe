@@ -8,6 +8,8 @@ import streamlit as st
 
 from src.obe.app import download_buildings
 
+MAX_AREA_KM2 = float(os.getenv("MAX_AREA_KM2", 5000))
+
 
 def calculate_area_sqkm(gdf):
     if gdf.crs is None:
@@ -71,8 +73,8 @@ with st.sidebar:
     location = (
         st.text_input(
             "Country Name",
-            placeholder="e.g. Nepal",
-            help="Required for Microsoft Buildings",
+            placeholder="e.g. United States",
+            help="Required for Microsoft Buildings API",
         )
         if source == "microsoft"
         else ""
@@ -146,9 +148,10 @@ with tabs[1]:
 
                 map_container = st.pydeck_chart(map_plot)
 
-                if area_sqkm > 5000:
+                if area_sqkm > MAX_AREA_KM2:
                     st.error(
-                        "❌ Input area exceeds 5000 km². Please provide a smaller area."
+                        f"❌ Input area exceeds {MAX_AREA_KM2:,} km² due to server restrictions. "
+                        "For larger areas, please install and run locally: `pip install obe`"
                     )
 
         except Exception as e:
@@ -156,11 +159,11 @@ with tabs[1]:
 
     with col2:
         if "gdf" in locals():
-            # st.subheader("Area Statistics")
+            st.subheader("Area Statistics")
             st.metric("Number of Features", len(gdf))
             st.metric("Area", f"{area_sqkm:.2f} km²")
 
-            if area_sqkm <= 5000:
+            if area_sqkm <= MAX_AREA_KM2:
                 if st.button(
                     "🏗️ Extract Buildings", type="primary", use_container_width=True
                 ):
@@ -219,7 +222,7 @@ with tabs[1]:
 
                             with open(output_path, "rb") as f:
                                 st.download_button(
-                                    label=f"📥 Download {file_formats[file_format]}",
+                                    label=f"📥 Download",
                                     data=f.read(),
                                     file_name=output_path.name,
                                     mime=f"application/{file_format}",
