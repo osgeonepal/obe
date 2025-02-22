@@ -71,8 +71,8 @@ with st.sidebar:
     location = (
         st.text_input(
             "Country Name",
-            placeholder="e.g. United States",
-            help="Required for Microsoft Buildings API",
+            placeholder="e.g. Nepal",
+            help="Required for Microsoft Buildings",
         )
         if source == "microsoft"
         else ""
