@@ -156,7 +156,7 @@ with tabs[1]:
 
     with col2:
         if "gdf" in locals():
-            st.subheader("Area Statistics")
+            # st.subheader("Area Statistics")
             st.metric("Number of Features", len(gdf))
             st.metric("Area", f"{area_sqkm:.2f} km²")
 
