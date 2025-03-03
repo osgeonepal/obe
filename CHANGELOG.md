@@ -1,3 +1,9 @@
+## 0.0.5 (2025-03-03)
+
+### Fix
+
+- **python**: fixes python version in project requirement
+
 ## 0.0.4 (2025-02-20)
 
 ### Fix
