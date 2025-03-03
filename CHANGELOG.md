@@ -1,3 +1,9 @@
+## 0.0.6 (2025-03-03)
+
+### Fix
+
+- **install**: fixes bug on installation of the python version
+
 ## 0.0.5 (2025-03-03)
 
 ### Fix
