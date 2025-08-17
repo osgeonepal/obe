@@ -23,11 +23,11 @@ def download_buildings(
     source,
     input_path,
     output_path,
-    format,
+    format=None,
     location=None,
 ):
     source = source.lower()
-    file_format = format.lower()
+    file_format = format.lower() if format else None
     if source == "google":
         result_gdf = process_google(input_path)
     elif source == "microsoft":
@@ -43,25 +43,24 @@ def download_buildings(
 
     print(f"Processed {len(result_gdf)} building footprints.")
 
-    if not output_path:
-        input_filename = os.path.splitext(os.path.basename(input_path))[0]
-        extension = get_output_extension(file_format)
-        output_path = f"{input_filename}_{source}_buildings{extension}"
+    if file_format:
+        if not output_path:
+            input_filename = os.path.splitext(os.path.basename(input_path))[0]
+            extension = get_output_extension(file_format)
+            output_path = f"{input_filename}_{source}_buildings{extension}"
+        print(f"Saving results to {output_path}...")
+        if file_format == "geojson":
+            result_gdf.to_file(output_path, driver="GeoJSON")
+        elif file_format == "geopackage":
+            result_gdf.to_file(output_path, driver="GPKG")
+        elif file_format == "shapefile":
+            result_gdf.to_file(output_path, driver="ESRI Shapefile")
+        elif file_format == "geojsonseq":
+            result_gdf.to_file(output_path, driver="GeoJSONSeq")
+        elif file_format == "geoparquet":
+            result_gdf.to_parquet(output_path)
 
-    print(f"Saving results to {output_path}...")
-
-    if file_format == "geojson":
-        result_gdf.to_file(output_path, driver="GeoJSON")
-    elif file_format == "geopackage":
-        result_gdf.to_file(output_path, driver="GPKG")
-    elif file_format == "shapefile":
-        result_gdf.to_file(output_path, driver="ESRI Shapefile")
-    elif file_format == "geojsonseq":
-        result_gdf.to_file(output_path, driver="GeoJSONSeq")
-    elif file_format == "geoparquet":
-        result_gdf.to_parquet(output_path)
-
-    print(f"Results successfully saved to {output_path}.")
+    return result_gdf
 
 
 def main():
@@ -86,7 +85,6 @@ def main():
     parser.add_argument(
         "--format",
         help="Output file_format: geojson, geojsonseq, geoparquet, geopackage, or shapefile",
-        default="geojson",
         choices=["geojson", "geojsonseq", "geoparquet", "geopackage", "shapefile"],
     )
     parser.add_argument(
