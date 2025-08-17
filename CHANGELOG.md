@@ -1,3 +1,9 @@
+## 0.0.7 (2025-08-17)
+
+### Fix
+
+- **format**: fixes bug on none format issue
+
 ## 0.0.6 (2025-03-03)
 
 ### Fix
