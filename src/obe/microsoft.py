@@ -53,9 +53,16 @@ def process_building_footprints(aoi_input, location):
                     url = rows.iloc[0]["Url"]
 
                     df2 = pd.read_json(url, lines=True)
-                    df2["geometry"] = df2["geometry"].apply(geometry.shape)
 
-                    gdf = gpd.GeoDataFrame(df2, crs=4326)
+                    properties_list = []
+                    geometries = []
+
+                    for _, row in df2.iterrows():
+                        properties_list.append(row["properties"])
+                        geometries.append(geometry.shape(row["geometry"]))
+
+                    properties_df = pd.DataFrame(properties_list)
+                    gdf = gpd.GeoDataFrame(properties_df, geometry=geometries, crs=4326)
                     fn = os.path.join(tmpdir, f"{quad_key}.geojson")
                     tmp_fns.append(fn)
                     if not os.path.exists(fn):

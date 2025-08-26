@@ -3,7 +3,6 @@ import os
 
 import geopandas as gpd
 import pytest
-from shapely.geometry import shape
 
 from obe.app import download_buildings
 
@@ -30,12 +29,10 @@ TEST_GEOJSON = {
     ],
 }
 
-# Define test directories
 TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(TEST_DIR, "data")
 OUTPUT_DIR = os.path.join(TEST_DIR, "outputs")
 
-# Create directories if they don't exist
 os.makedirs(DATA_DIR, exist_ok=True)
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
@@ -82,6 +79,12 @@ def test_microsoft_buildings(test_geojson_path):
     assert os.path.exists(result_file)
     gdf = gpd.read_file(result_file)
     assert len(gdf) > 0
+
+    assert "height" in gdf.columns, "Microsoft buildings should have 'height' attribute"
+    assert "confidence" in gdf.columns, (
+        "Microsoft buildings should have 'confidence' attribute"
+    )
+    assert "id" in gdf.columns, "Microsoft buildings should have 'id' attribute"
 
 
 def test_osm_buildings(test_geojson_path):
