@@ -1,3 +1,9 @@
+## 0.0.8 (2025-08-26)
+
+### Fix
+
+- **microsoft**: fixes attributes for the microsoft
+
 ## 0.0.7 (2025-08-17)
 
 ### Fix
