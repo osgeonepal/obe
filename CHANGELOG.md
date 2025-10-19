@@ -1,3 +1,9 @@
+## 0.0.9 (2025-10-19)
+
+### Fix
+
+- **overturemaps**: bumps overturemaps to new version
+
 ## 0.0.8 (2025-08-26)
 
 ### Fix
