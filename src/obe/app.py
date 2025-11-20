@@ -19,6 +19,18 @@ def get_output_extension(file_format):
     return file_format_extensions[file_format]
 
 
+def infer_format_from_extension(output_path):
+    ext_map = {
+        ".geojson": "geojson",
+        ".gpkg": "geopackage",
+        ".shp": "shapefile",
+        ".geojsonseq": "geojsonseq",
+        ".parquet": "geoparquet",
+    }
+    ext = os.path.splitext(output_path)[1].lower()
+    return ext_map.get(ext)
+
+
 def download_buildings(
     source,
     input_path,
@@ -42,6 +54,12 @@ def download_buildings(
         raise ValueError(f"Unknown source: {source}")
 
     print(f"Processed {len(result_gdf)} building footprints.")
+
+    file_format = format.lower() if format else None
+    if output_path and not file_format:
+        file_format = infer_format_from_extension(output_path)
+        if not file_format:
+            raise ValueError(f"Cannot infer format from output file: {output_path}")
 
     if file_format:
         if not output_path:
