@@ -21,7 +21,7 @@ dependencies = [
 obe = "obe.app:main"
 
 [tool.poetry]
-version = "0.0.9"
+version = "0.0.10"
 packages = [{include = "obe", from = "src"}]
 license = "MIT" 
 

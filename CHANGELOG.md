@@ -1,3 +1,9 @@
+## 0.0.10 (2025-11-20)
+
+### Fix
+
+- **fileformat**: fixes bug on automatic file format recognization
+
 ## 0.0.9 (2025-10-19)
 
 ### Fix

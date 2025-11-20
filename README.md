@@ -2,8 +2,9 @@
 
 A Python package to extract building footprints from multiple open data sources including Google Open Buildings, Microsoft Building Footprints, OpenStreetMap, and Overture Maps.
 
-## Example 
-Run Example Notebook [here:](./example_obe_usage.ipynb) 
+## Example
+
+Run Example Notebook [here:](./example_obe_usage.ipynb)
 
 ## Features
 
@@ -18,32 +19,34 @@ Run Example Notebook [here:](./example_obe_usage.ipynb)
   - Shapefile
   - GeoJSONSeq
   - GeoParquet
-- Command-line 
+- Command-line
 - Python API
 - [Streamlit web interface](https://obextract.streamlit.app/)
 
 ## Installation
 
 Using pip:
+
 ```bash
 pip install obe
 ```
 
-Using poetry 
+Using poetry
+
 ```bash
 poetry add obe
 ```
 
-## Usage 
+## Usage
 
-### Command line interface 
+### Command line interface
 
 ```bash
 obe --source <source> --input <input.geojson> --output <output.geojson>
 ```
 
-
 ### Examples:
+
 ```bash
 # Google Open Buildings
 obe --source google --input area.geojson --output google_buildings.geojson
@@ -73,7 +76,8 @@ download_buildings(
 )
 ```
 
-### Example Input 
+### Example Input
+
 ```json
 {
   "type": "FeatureCollection",
@@ -98,9 +102,10 @@ download_buildings(
 }
 ```
 
-### Example Output 
+### Example Output
 
 ![image](https://github.com/user-attachments/assets/a7646d95-f80d-49ed-afc9-1189055ea890)
 
-### Authors 
-- Initiated by @kshitijrajsharma 
+### Authors
+
+- Initiated by @kshitijrajsharma
